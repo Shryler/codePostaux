@@ -23,7 +23,7 @@ async function nomCommune(codePostal) {
             commune = data;
             check = true;
         })
-        .catch((error) => console.clear());
+        .catch(() => console.clear());
 }
 
 // Fonction avec .map pour écrire le résultat
