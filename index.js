@@ -14,12 +14,16 @@ async function nomCommune(codePostal) {
             if (!res.ok) {
                 errorMsg.innerHTML = "Ce code postal n'existe pas !";
                 check = false;
+                console.clear();
             }
             return res;
         })
         .then((res) => res.json())
-        .then((data) => (commune = data))
-        check = true;
+        .then((data) => {
+            commune = data;
+            check = true;
+        })
+        .catch((error) => console.clear());
 }
 
 // Fonction avec .map pour écrire le résultat
