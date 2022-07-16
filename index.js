@@ -2,14 +2,15 @@ const result = document.querySelector("#response");
 const form = document.querySelector("#form");
 let commune = [];
 
-console.log(result);
+
+// Récupération des données sur l'API
 async function nomCommune(codePostal) {
     await fetch(`https://apicarto.ign.fr/api/codes-postaux/communes/${codePostal}`)
         .then((res) => res.json())
         .then((data) => (commune = data));
-
 }
 
+// Fonction avec .map pour écrire le résultat
 function communeDisplay() {
     result.innerHTML = commune.map((commune) =>
         `
@@ -18,6 +19,7 @@ function communeDisplay() {
     ).join("");
 }
 
+// Fonction de lecture instantanée dans l'input
 form.addEventListener("input", (e) => {
     e.preventDefault();
 
@@ -29,7 +31,7 @@ form.addEventListener("input", (e) => {
         result.innerHTML = "<option>Commune</option>";
     }
     else {
-
+        alert("Erreur");
     }
 });
 
